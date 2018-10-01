@@ -1,5 +1,4 @@
 {% set version = '1.0' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,21 +9,22 @@ package:
 source:
   fn: colourpicker_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/colourpicker_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/colourpicker/colourpicker_{{ version }}.tar.gz
-
+    - {{ cran_mirror }}/src/contrib/colourpicker_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/colourpicker/colourpicker_{{ version }}.tar.gz
   sha256: f1dacbafb05c09f61b9bdd0fdcee5344409759b042a71ec46d7c9e3710107b7c
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-ggplot2
     - r-htmltools
@@ -33,7 +33,6 @@ requirements:
     - r-miniui >=0.1.1
     - r-shiny >=0.11.1
     - r-shinyjs
-
   run:
     - r-base
     - r-ggplot2
@@ -46,11 +45,11 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('colourpicker')"  # [not win]
+    - $R -e "library('colourpicker')"           # [not win]
     - "\"%R%\" -e \"library('colourpicker')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/web/packages/colourpicker/index.html
+  home: https://github.com/daattali/colourpicker
   license: MIT
   summary: A colour picker that can be used as an input in Shiny apps or Rmarkdown documents.
     The colour picker supports alpha opacity, custom colour palettes, and many more
@@ -58,8 +57,9 @@ about:
     you pick colours to use in your plots. A more generic Colour Picker RStudio Addin
     is also provided to let  you select colours to use in your R code.
   license_family: MIT
+
 extra:
-   recipe-maintainers:
+  recipe-maintainers:
     - MathiasHaudgaard
     - FrodePedersen
     - ArneKr
@@ -67,3 +67,5 @@ extra:
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
