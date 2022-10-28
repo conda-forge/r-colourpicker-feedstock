@@ -1,4 +1,4 @@
-{% set version = "1.1.1" %}
+{% set version = "1.2.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/colourpicker_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/colourpicker/colourpicker_{{ version }}.tar.gz
-  sha256: a0d09982b048b143e2c3438ccec039dd20d6f892fa0dedc9fdcb0d40de883ce0
+  sha256: bc2c80eee046219038baef9f8f213c9824d7fec7f893f6a1b881dd44b4a8638a
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
