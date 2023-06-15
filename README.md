@@ -1,11 +1,11 @@
-About r-colourpicker
-====================
+About r-colourpicker-feedstock
+==============================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-colourpicker-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/daattali/colourpicker
 
 Package license: MIT
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-colourpicker-feedstock/blob/main/LICENSE.txt)
 
 Summary: A colour picker that can be used as an input in Shiny apps or Rmarkdown documents. The colour picker supports alpha opacity, custom colour palettes, and many more options. A Plot Colour Helper tool is available as an RStudio Addin, which helps you pick colours to use in your plots. A more generic Colour Picker RStudio Addin is also provided to let  you select colours to use in your R code.
 
